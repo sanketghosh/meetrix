@@ -34,7 +34,7 @@ export default function Features() {
           {CARDS.map((item) => (
             <div
               key={item.cardTitle}
-              className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-main p-4 text-text shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-emerald-700 hover:text-bw hover:shadow-none"
+              className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-main p-4 text-text shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-indigo-700 hover:text-bw hover:shadow-none"
             >
               <h1 className="text-lg font-semibold">{item.cardTitle}</h1>
               <p>{item.cardDescription}</p>

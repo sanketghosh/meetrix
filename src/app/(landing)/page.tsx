@@ -30,7 +30,6 @@ export default function Home() {
       <div className="w-full border-b" />
       <Features />
       <div className="w-full border-b" />
-      <Testimonials />
     </main>
   );
 }

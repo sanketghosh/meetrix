@@ -1,4 +1,12 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Testimonials() {
   const TESTIMONIALS = [
@@ -37,35 +45,37 @@ export default function Testimonials() {
   return (
     <section className="mx-auto max-w-[1650px] px-4">
       <div className="space-y-6 border-x px-6 py-6 sm:px-8 md:px-10">
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-center font-bricolage text-xl font-extrabold md:text-2xl lg:text-3xl xl:text-4xl">
-            Real Stories, Real Results
-          </h1>
-          <p className="text-center md:text-xl">
-            Don't just take our word for it. Our customers share their
-            experiences with Meetrix. We have simplified scheduling for
-            thousands of users.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {TESTIMONIALS.map((item) => (
-            <div
-              key={item.fullName}
-              className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-emerald-700 p-4 text-bw shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-main hover:text-text hover:shadow-none"
-            >
-              <div className="flex items-center gap-3">
-                <Avatar className="size-12 bg-bw hover:text-text">
-                  <AvatarFallback>US</AvatarFallback>
-                </Avatar>
-                <div className="leading-5">
-                  <h1 className="text-lg font-semibold">{item.fullName}</h1>
-                  <p>{item.companyName}</p>
+        <h1 className="text-center font-bricolage text-xl font-extrabold md:text-2xl lg:text-3xl xl:text-4xl">
+          Real Stories, Real Results
+        </h1>
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          className="w-full"
+        >
+          <CarouselContent>
+            {TESTIMONIALS.map((item) => (
+              <CarouselItem
+                key={item.fullName}
+                className="md:basis-1/2 lg:basis-1/3"
+              >
+                <div className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-main p-4 text-text shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-indigo-700 hover:text-bw hover:shadow-none">
+                  <div>
+                    {/* <img src="" alt="" /> */}
+                    <div>
+                      <h2>{item.fullName}</h2>
+                      <p>{item.companyName}</p>
+                    </div>
+                  </div>
+                  <p>{item.testimonial}</p>
                 </div>
-              </div>
-              <p>{item.testimonial}</p>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
@@ -75,4 +85,19 @@ export default function Testimonials() {
  *
  * NOTE: will work on carousel
  *
+ */
+
+/**
+ * 
+ *  <div className="p-1">
+                  <Card>
+                    <CardContent className="flex aspect-square items-center justify-center p-6">
+                      <span className="text-3xl font-semibold">
+                        {index + 1}
+                      </span>
+                    </CardContent>
+                  </Card>
+                </div>
+ * 
+ * 
  */
