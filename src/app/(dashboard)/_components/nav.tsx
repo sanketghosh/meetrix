@@ -1,4 +1,5 @@
 // packages
+
 import {
   CalendarCheck2Icon,
   ClockIcon,
@@ -7,6 +8,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import { currentUser } from "@clerk/nextjs/server";
 
 export const DASHBOARD_NAV_ITEMS = [
   {
@@ -31,7 +33,9 @@ export const DASHBOARD_NAV_ITEMS = [
   },
 ];
 
-export default function Navbar() {
+export default async function Navbar() {
+  const user = await currentUser();
+
   return (
     <div className="flex h-full flex-col justify-between">
       <div>
@@ -62,11 +66,11 @@ export default function Navbar() {
       <div className="p-4">
         <div className="flex items-center gap-2 rounded-base border bg-bg p-2">
           <div className="size-12 overflow-hidden rounded-full border bg-bw md:size-10 lg:size-14">
-            <img src="/user.svg" alt="user" className="size-full" />
+            <img src={user?.imageUrl} alt="user" className="size-full" />
           </div>
           <div className="truncate leading-tight">
-            <h2 className="font-bold">John Doe</h2>
-            <p className="text-sm font-medium">johndoe@mail.com</p>
+            <h2 className="font-bold">{user?.fullName}</h2>
+            {/* <p className="text-sm font-medium">{user?.primaryEmailAddress}</p> */}
           </div>
         </div>
       </div>

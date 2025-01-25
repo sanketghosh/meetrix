@@ -12,7 +12,7 @@ export default function Testimonials() {
   const TESTIMONIALS = [
     {
       fullName: "Emily Chen",
-      companyName: "GreenTech Inc.",
+      companyName: "tealTech Inc.",
       testimonial:
         "Meetrix has been a game-changer for our team! The ease of scheduling meetings and integrating with our existing calendar has saved us so much time.",
     },
@@ -60,7 +60,7 @@ export default function Testimonials() {
                 key={item.fullName}
                 className="md:basis-1/2 lg:basis-1/3"
               >
-                <div className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-main p-4 text-text shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-indigo-700 hover:text-bw hover:shadow-none">
+                <div className="cursor-pointer space-y-4 rounded-base border-2 border-border bg-main p-4 text-text shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:bg-teal-700 hover:text-bw hover:shadow-none">
                   <div>
                     {/* <img src="" alt="" /> */}
                     <div>

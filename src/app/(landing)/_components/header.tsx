@@ -2,8 +2,11 @@ import { Button } from "@/components/ui/button";
 import { NAVBAR_DATA } from "@/data";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Header() {
+export default async function Header() {
+  const user = await currentUser();
+
   return (
     <header className="flex h-14 items-center border-b">
       <div className="mx-auto flex h-full w-full max-w-[1650px] items-center justify-between px-4">
@@ -18,10 +21,10 @@ export default function Header() {
           <MenuIcon />
         </Button>
         <Link
-          href={"/register"}
+          href={user ? "/dashboard" : "/sign-in"}
           className="flex h-full items-center border-x bg-text px-4 font-medium text-bg transition-all hover:bg-bw hover:text-text"
         >
-          Get Started
+          {user ? "Dashboard" : "Get Started"}
         </Link>
       </div>
     </header>

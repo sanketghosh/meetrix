@@ -1,15 +1,22 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { GithubIcon, StarIcon } from "lucide-react";
+// packages
+import { ArrowRightCircle, GithubIcon, StarIcon } from "lucide-react";
 import Link from "next/link";
-import Arrow from "../_assets/arrow";
-import StarDoodle from "../_assets/star";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Hero() {
+// local modules
+import { cn } from "@/lib/utils";
+
+// components
+import { Arrow, StarDoodle } from "@/app/(landing)/_assets";
+import { Button, buttonVariants } from "@/components/ui/button";
+
+export default async function Hero() {
+  const user = await currentUser();
+
   return (
     <section className="mx-auto max-w-[1650px] px-4">
       <div className="flex min-h-[calc(100vh-7rem)] flex-col border-x lg:min-h-[calc(100vh-7.5rem)] lg:flex-row xl:min-h-[calc(100vh-8.5rem)]">
-        <div className="relative flex min-h-full flex-1 flex-col justify-center space-y-4 bg-indigo-700 px-6 sm:px-8 md:px-10">
+        <div className="relative flex min-h-full flex-1 flex-col justify-center space-y-4 bg-teal-700 px-6 sm:px-8 md:px-10">
           <StarDoodle className="absolute top-20 lg:top-56" />
           <h1 className="font-bricolage text-5xl font-extrabold text-bw md:text-7xl lg:text-6xl xl:text-7xl">
             Making time for what matters.
@@ -23,10 +30,19 @@ export default function Hero() {
           <div className="relative flex items-center gap-4">
             <Link
               className={cn(buttonVariants({ variant: "default" }))}
-              href={"/dashboard"}
+              href={user ? "/dashboard" : "/sign-in"}
             >
-              <StarIcon />
-              Get Started
+              {user ? (
+                <>
+                  <ArrowRightCircle />
+                  Dashboard
+                </>
+              ) : (
+                <>
+                  <StarIcon />
+                  Get Started
+                </>
+              )}
             </Link>
             <Link
               href={"https://github.com/sanketghosh/meetrix"}
