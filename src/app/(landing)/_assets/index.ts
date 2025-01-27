@@ -1,4 +1,3 @@
-import Arrow from "@/app/(landing)/_assets/arrow";
-import StarDoodle from "@/app/(landing)/_assets/star";
+import Logoipsum from "@/app/(landing)/_assets/logoipsum";
 
-export { Arrow, StarDoodle };
+export { Logoipsum };
